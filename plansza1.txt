@@ -1,0 +1,14 @@
+xWierzcholki = 0-0-100-100
+yWierzcholki = 100-95-95-100
+xLadowiska = 40-40-60-60
+yLadowiska = 100-93-93-100
+xStartoweStatku = 49-51-50
+yStartoweStatku = 20-20-15
+xPredkoscStatku = 15
+yPredkoscStatku = 15
+xPredkoscMax = 7
+yPredkoscMax = 7
+liczbaStatkow = 3
+paliwo = 100
+liczbaPoziomow = 4
+punktyZaPlansze = 100
