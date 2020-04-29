@@ -1,0 +1,16 @@
+ Celem gry jest wylądowanie statkiem na powierzchni jakiejś planety.
+Plansza gry przedstawia nieregularną powierzchnię z płaskim fragmentem przeznaczonym na lądowisko.
+Zadaniem gracza jest doprowadzenie do pomyślnego wylądowania statku na lądowisku.
+Statek opada swobodnie pod wpływem grawitacji.
+Gracz może sterować silnikami rakietowymi spowalniającymi opadanie lub przesuwającymi statek na boki.
+Lądowanie jest pomyślne, gdy nastąpiło na lądowisku z ograniczoną prędkością (zarówno poziomą jak i pionową).
+Sterowanie odbywa się za pomocą strzałek na klawiaturze.
+Gra składa się z poziomów - plansz, przedstawiających różne ukształtowanie terenu.
+Kolejne poziomy różnią się szerokością lądowiska, stałą grawitacji, dopuszczalnymi prędkościami lądowania, itp.
+Przejście na kolejny poziom następuje po pomyślnym wylądowaniu.
+Rozbicie statku powoduje powtórzenie poziomu.
+Gracz ma 3 statki na każdą planszę.
+Ukończenie każdej planszy nagradzane jest 100 punktami.
+Dodatkowo graczowi przysługuje premia za ilość pozostałego paliwa (dla przykładu: Adamowi zostało 23% paliwa, zatem otrzymuje dodatkowe 23 punkty) oraz liczbę pozostałych, nierozbitych statków - po 10 punktów za każdy ocalony.
+Elementem dodatkowym będą bonusy usytuowane jako małe kwadraty na planszy gry.
+W momencie kontaktu (zderzenia) statku z bonusem uzyskujemy dodatkowe 20 punktów.
