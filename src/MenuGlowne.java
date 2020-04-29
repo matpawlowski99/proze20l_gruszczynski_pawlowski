@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 public class MenuGlowne extends JFrame implements ActionListener {
 
     private OnlineCzyOffline onlineCzyOffline;
+    private ZasadyGry zasadyGry;
     private JButton bGraj, bZasadyGry, bRankingNajlepszych, bWyjscie;
 
     public MenuGlowne() {
@@ -44,7 +45,9 @@ public class MenuGlowne extends JFrame implements ActionListener {
             onlineCzyOffline.setVisible(true);
         }
         else if (zrodlo==bZasadyGry) {
-
+            if (zasadyGry==null)
+                zasadyGry = new ZasadyGry(this);
+            zasadyGry.setVisible(true);
         }
         else if (zrodlo==bWyjscie)
             dispose();

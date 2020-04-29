@@ -1,57 +1,70 @@
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JButton;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
-public class DodajGracza extends JDialog implements ActionListener {
+public class DodajGracza extends Logika implements ActionListener {
 
+    static int nrPlanszy;
+    static int pozostaleStatki = 3;
+    static String nazwaGracza;
+    static JDialog dodajGracza;
     private JLabel lPodajNazweGracza;
     private JTextField tNick;
     private JButton bZatwierdz, bWstecz;
-    private Gra gra;
 
     public DodajGracza() {
-        super((Dialog) null,"",true);
-        setSize(400,150);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setLocationRelativeTo(null);
-        setResizable(false);
-        setLayout(null);
+        dodajGracza = new JDialog((Dialog) null,"",true);
+        //super((Dialog) null,"",true);
+        dodajGracza.setSize(400,150);
+        dodajGracza.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        dodajGracza.setLocationRelativeTo(null);
+        dodajGracza.setResizable(false);
+        dodajGracza.setLayout(null);
+        //dodajGracza.setVisible(true);
+
+        nrPlanszy = 1;
 
         lPodajNazweGracza = new JLabel("Podaj nazwę gracza: ", JLabel.LEFT);
-        lPodajNazweGracza.setBounds(5,0,200,20);
-        add(lPodajNazweGracza);
+        lPodajNazweGracza.setBounds(10,5,200,20);
+        dodajGracza.add(lPodajNazweGracza);
 
         tNick = new JTextField();
-        tNick.setBounds(5,25,200,20);
-        add(tNick);
+        tNick.setBounds(10,30,200,20);
+        dodajGracza.add(tNick);
 
         bZatwierdz = new JButton("Zatwierdź");
         bZatwierdz.setBounds(10,75,150,20);
-        add(bZatwierdz);
+        dodajGracza.add(bZatwierdz);
         bZatwierdz.addActionListener(this);
 
         bWstecz = new JButton("Wstecz");
         bWstecz.setBounds(225,75,150,20);
-        add(bWstecz);
+        dodajGracza.add(bWstecz);
         bWstecz.addActionListener(this);
 
-        //setVisible(true);
+        //dodajGracza.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         Object zrodlo = e.getSource();
         if (zrodlo==bZatwierdz) {
-            dispose();
-            gra = new Gra();
-            gra.setVisible(true);
+            if (tNick.getText().equals(""))
+                JOptionPane.showMessageDialog(null,"Nie wprowadzono nazwy gracza!", "Błąd",JOptionPane.ERROR_MESSAGE);
+            else {
+                nazwaGracza = tNick.getText();
+                dodajGracza.dispose();
+                try {
+                    oknoGry(nrPlanszy);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
         }
         else if (zrodlo==bWstecz) {
-            dispose();
+            dodajGracza.dispose();
             OnlineCzyOffline onlineCzyOffline = new OnlineCzyOffline(null);
             onlineCzyOffline.setVisible(true);
         }

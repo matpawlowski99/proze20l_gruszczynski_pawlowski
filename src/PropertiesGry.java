@@ -15,15 +15,20 @@ public class PropertiesGry {
     static int[] yLadowiska;
     static int[] xStartoweStatku;
     static int[] yStartoweStatku;
+    static int[] xBonusu;
+    static int[] yBonusu;
 
-    private static int xPredkoscStatku;
-    private static int yPredkoscStatku;
-    private static int xPredkoscMax;
-    private static int yPredkoscMax;
+    static int xPredkoscStatku;
+    static int yPredkoscStatku;
+    static int xPredkoscMax;
+    static int yPredkoscMax;
+    static int xPredkoscLadowania;
+    static int yPredkoscLadowania;
     static int liczbaStatkow;
     static int paliwo;
-    private static int liczbaPoziomow;
-    private static int punktyZaPlansze;
+    static int liczbaPoziomow;
+    static int punktyZaPlansze;
+    static int punktyZaBonus;
 
     private static InputStream plik;
     private static Properties configPlanszy;
@@ -39,15 +44,21 @@ public class PropertiesGry {
         yLadowiska = Arrays.stream(configPlanszy.getProperty("yLadowiska").split("-")).mapToInt(Integer::parseInt).toArray();
         xStartoweStatku = Arrays.stream(configPlanszy.getProperty("xStartoweStatku").split("-")).mapToInt(Integer::parseInt).toArray();
         yStartoweStatku = Arrays.stream(configPlanszy.getProperty("yStartoweStatku").split("-")).mapToInt(Integer::parseInt).toArray();
+        xBonusu = Arrays.stream(configPlanszy.getProperty("xBonusu").split("-")).mapToInt(Integer::parseInt).toArray();
+        yBonusu = Arrays.stream(configPlanszy.getProperty("yBonusu").split("-")).mapToInt(Integer::parseInt).toArray();
 
         xPredkoscStatku = Integer.parseInt(configPlanszy.getProperty("xPredkoscStatku"));
         yPredkoscStatku = Integer.parseInt(configPlanszy.getProperty("yPredkoscStatku"));
         xPredkoscMax = Integer.parseInt(configPlanszy.getProperty("xPredkoscMax"));
         yPredkoscMax = Integer.parseInt(configPlanszy.getProperty("yPredkoscMax"));
+        xPredkoscLadowania = Integer.parseInt(configPlanszy.getProperty("xPredkoscLadowania"));
+        yPredkoscLadowania = Integer.parseInt(configPlanszy.getProperty("yPredkoscLadowania"));
+
         liczbaStatkow = Integer.parseInt(configPlanszy.getProperty("liczbaStatkow"));
         paliwo = Integer.parseInt(configPlanszy.getProperty("paliwo"));
         liczbaPoziomow = Integer.parseInt(configPlanszy.getProperty("liczbaPoziomow"));
         punktyZaPlansze = Integer.parseInt(configPlanszy.getProperty("punktyZaPlansze"));
+        punktyZaBonus = Integer.parseInt(configPlanszy.getProperty("punktyZaBonus"));
 
         dostosujSkale();
     }
@@ -59,5 +70,7 @@ public class PropertiesGry {
         yLadowiska = Arrays.stream(yLadowiska).map(y_ladowiska -> (int)(0.0125 * PropertiesGry.WYSOKOSC * y_ladowiska)).toArray();
         xStartoweStatku = Arrays.stream(xStartoweStatku).map(x_startowe_statku -> (int)(0.0125 * PropertiesGry.SZEROKOSC * x_startowe_statku)).toArray();
         yStartoweStatku = Arrays.stream(yStartoweStatku).map(y_startowe_statku -> (int)(0.0125 * PropertiesGry.WYSOKOSC * y_startowe_statku)).toArray();
+        xBonusu = Arrays.stream(xBonusu).map(x_bonusu -> (int)(0.0125 * PropertiesGry.SZEROKOSC * x_bonusu)).toArray();
+        yBonusu = Arrays.stream(yBonusu).map(y_bonusu -> (int)(0.0125 * PropertiesGry.WYSOKOSC * y_bonusu)).toArray();
     }
 }

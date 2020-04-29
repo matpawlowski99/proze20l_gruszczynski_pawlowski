@@ -49,7 +49,7 @@ public class OnlineCzyOffline extends JDialog implements ActionListener {
             this.dispose();
             if (dodajGracza==null)
                 dodajGracza = new DodajGracza();
-            dodajGracza.setVisible(true);
+            DodajGracza.dodajGracza.setVisible(true);
         }
 
     }

@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8cb8a5e1-5bd0-4116-b9ab-6f99a2c39921" name="Default Changelist" comment="" />
+    <list default="true" id="8cb8a5e1-5bd0-4116-b9ab-6f99a2c39921" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROZE LunarLander/DodajGracza.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROZE LunarLander/DodajGracza.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROZE LunarLander/Gra.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROZE LunarLander/Gra.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROZE LunarLander/MenuGlowne.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROZE LunarLander/MenuGlowne.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROZE LunarLander/OnlineCzyOffline.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROZE LunarLander/OnlineCzyOffline.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PROZE LunarLander/PropertiesGry.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROZE LunarLander/PropertiesGry.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/plansza1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/plansza1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DodajGracza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DodajGracza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Gra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gra.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MenuGlowne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MenuGlowne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OnlineCzyOffline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OnlineCzyOffline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PropertiesGry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PropertiesGry.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +28,13 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1a4hpV79o7GuJrM3MoYwj2lijkV" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
@@ -60,6 +79,19 @@
       <updated>1586000956234</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
