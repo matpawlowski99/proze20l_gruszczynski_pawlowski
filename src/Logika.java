@@ -243,6 +243,7 @@ public abstract class Logika implements ActionListener {
     /** Metoda, ktora konczy nasza gre i wyswietla odpowiednie komunikaty oraz ostateczny wynik, posiada 2 paremtry:
      * @param gracz to parametr, dla ktorego zostaje przypisany uzyskany wynik,
      * @param wynik to paremetr, ktory otrzymuje wartosc w momencie zakonczenia kazdej planszy
+     * @throws IOException gdy plik w wywolaniu metod rankingowych nie istnieje
      */
     private void koniecGry(String gracz, int wynik) throws IOException {
         RankingNajlepszych.dodajRekord(gracz, wynik);

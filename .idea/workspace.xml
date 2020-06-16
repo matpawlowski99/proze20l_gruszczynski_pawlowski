@@ -9,29 +9,8 @@
     <list default="true" id="8cb8a5e1-5bd0-4116-b9ab-6f99a2c39921" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROZE LunarLander/DodajGracza.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROZE LunarLander/DodajGracza.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROZE LunarLander/Gra$Animacja.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROZE LunarLander/Gra$Animacja.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROZE LunarLander/Gra.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROZE LunarLander/Gra.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROZE LunarLander/Klawiatura.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROZE LunarLander/Klawiatura.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROZE LunarLander/Logika.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROZE LunarLander/Logika.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROZE LunarLander/LunarLander.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROZE LunarLander/LunarLander.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROZE LunarLander/MenuGlowne.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROZE LunarLander/MenuGlowne.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROZE LunarLander/OnlineCzyOffline.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROZE LunarLander/OnlineCzyOffline.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROZE LunarLander/PropertiesGry.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROZE LunarLander/PropertiesGry.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PROZE LunarLander/ZasadyGry.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PROZE LunarLander/ZasadyGry.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plansza1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/plansza1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plansza2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/plansza2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plansza3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/plansza3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/plansza4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/plansza4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DodajGracza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DodajGracza.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Gra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Gra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Klawiatura.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Klawiatura.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Logika.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Logika.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LunarLander.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LunarLander.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MenuGlowne.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MenuGlowne.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/OnlineCzyOffline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/OnlineCzyOffline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PropertiesGry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PropertiesGry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ZasadyGry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ZasadyGry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RankingNajlepszych.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RankingNajlepszych.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

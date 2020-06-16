@@ -22,7 +22,8 @@ class RankingNajlepszych extends JDialog {
     private JButton bWstecz;
 
     /** Metoda rysujaca okienko RANKING NAJLEPSZYCH, posiada jeden parametr:
-     * @param owner jest komponentem modalnym na rzecz komponentu public RankingNajlepszych().
+     * @param owner jest komponentem modalnym na rzecz komponentu public RankingNajlepszych()
+     * @throws IOException gdy plik nie istnieje
      */
     RankingNajlepszych(JFrame owner) throws IOException {
         super(owner,"Ranking najlepszych",true);
