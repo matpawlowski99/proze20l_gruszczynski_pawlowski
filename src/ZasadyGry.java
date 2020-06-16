@@ -8,14 +8,22 @@ import java.awt.Color;
 import java.awt.BorderLayout;
 import java.io.File;
 import java.io.FileReader;
+/**
+ * Klasa odpowiadajaca za okno ZASADY GRY
+ */
+public class ZasadyGry extends JDialog {
+    /** Komponent wypelniajacy ramke (frame), mozna do niego dodawac elementy - pomaga w ich rozmieszczaniu)*/
+    private JPanel panel;
+    /** Pole, ktore przechowuje tekst*/
+    private JTextPane textPane;
+    /** Czcionka - forma graficzna tekstu*/
+    private Font font;
+    /** Przewijanie tekstu przy pomocy bocznego suwaka*/
+    private JScrollPane scrollPane;
 
-public class ZasadyGry extends JDialog{
-
-    JPanel panel;
-    JTextPane textPane;
-    Font font;
-    JScrollPane scrollPane;
-
+    /** Metoda rysujaca okienko ZASADY GRY, posiada jeden parametr:
+     * @param owner jest komponentem modalnym na rzecz komponentu public ZasadyGry().
+     */
     public ZasadyGry(JFrame owner) {
         super(owner,"Zasady gry", true);
         panel = new JPanel();
@@ -35,7 +43,10 @@ public class ZasadyGry extends JDialog{
         textPane.setEditable(false);
     }
 
-    public static void wyswietlZasady(JTextPane textPane) {
+    /** Metoda wyswietlajaca zasady gry, posiada jeden parametr:
+     * @param textPane to pole, ktore przechowuje tekst.
+     */
+    private static void wyswietlZasady(JTextPane textPane) {
         try {
             File plik = new File("zasady.txt");
             FileReader fileReader = new FileReader(plik);

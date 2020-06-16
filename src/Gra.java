@@ -3,27 +3,56 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferStrategy;
 import java.io.IOException;
 import java.util.TimerTask;
-
 import static java.lang.StrictMath.abs;
 
+/** Klasa rozszerza Canvas, ktora stosujemy, by swobodnie rysowac po ekranie */
 public class Gra extends Canvas {
-
-    Polygon planeta, ladowisko, statek, bonus;
-    Graphics2D g2d;
-    AffineTransform skaluj, macierz;
-    float skalujX, skalujY;
+    /** Opis planety jako wielokata*/
+    private Polygon planeta;
+    /** Opis ladowiska jako wielokata*/
+    private Polygon ladowisko;
+    /** Opis statku jako wielokata*/
+    private Polygon statek;
+    /** Opis bonusa jako wielokata*/
+    private Polygon bonus;
+    /**Graphics2D to rozszerzenie graphics do rysowania figur 2D*/
+    private Graphics2D g2d;
+    /** Przeksztalcenie geometryczne przestrzeni, ktore odwzorowuje odcinki na odcinki, proste w proste itd */
+    private AffineTransform skaluj, macierz;
+    /** Wspolczynniki przeksztalcenia wzdluz osi x oraz osi y*/
+    private float skalujX, skalujY;
+    /** Wynik gracza na poczatku przyjmuje wartosc 0 */
     int wynik = 0;
-    int liczbaStatkow, paliwo, punktyZaPlansze, punktyZaBonus;
+    /** Liczba statkow*/
+    private int liczbaStatkow;
+    /** Ilosc paliwa*/
+    int paliwo;
+    /** Punkty uzyskane za przejscie planszy*/
+    int punktyZaPlansze;
+    /**Punkty uzyskane za zdobycie bonusu*/
+    private int punktyZaBonus;
 
-    int [] xStatku, yStatku;
-    double szerokoscStatku, wysokoscStatku;
+    /** Wspolrzedne statku*/
+    private int [] xStatku, yStatku;
+    /** Szerokosc statku*/
+    private double szerokoscStatku;
+    /** Wysokosc statku*/
+    private double wysokoscStatku;
+    /** Predkosc statku wzdluz osi x oraz wzdluz osi y*/
     float xPredkosc, yPredkosc;
 
-    boolean czyZebranoBonus = false;
+    /** Zmienna informujaca czy zdobyto bonus*/
+    private boolean czyZebranoBonus = false;
+    /** Zmienna informujaca czy sie rozbito*/
     boolean czyRozbito;
+    /** Zmienna informujaca czy wyladowano*/
     boolean czyWyladowano;
+    /** Zmienna informujaca czy zapauzowano gre, wstepnie gra nie jest zapauzowana*/
     boolean czyZapauzowano = false;
 
+    /**Konstruktor, ktory wczytuje poziom gry, obsluguje wyjatki zwiazane z wczytaniem plikow przy pomocy IOException
+     @param level jako poziom
+     @throws IOException , gdy plik nie istnieje */
     Gra(int level) throws IOException {
         PropertiesGry.wczytajPlansze(level);
         xStatku = PropertiesGry.xStartoweStatku;
@@ -34,6 +63,9 @@ public class Gra extends Canvas {
         punktyZaBonus = PropertiesGry.punktyZaBonus;
     }
 
+    /** Metoda, ktora tworzy nam strategie buforowania potrojnego, ta metoda jest potrzebna do animacji.
+     * @return - zwraca nam wartosc bs, pobrana dzieki getBufferStrategy().
+     */
     private BufferStrategy zainicjalizujBufor() {
         BufferStrategy bs = getBufferStrategy();
         if (null == bs) {
@@ -43,6 +75,10 @@ public class Gra extends Canvas {
         return bs;
     }
 
+    /** Metoda paint tworzy obiekt klasy Graphics i przypisuje mu zrzutowany na te klase argument g.
+     * Metoda paint uwzglednia skalowanie elementow w rozgrywce, zawiera jeden parametr:
+     * @param g parametr przekazujacy informacje o malowaniu danego elementu.
+     */
     @Override
     public void paint(Graphics g) {
         super.paint(g);
@@ -88,7 +124,8 @@ public class Gra extends Canvas {
         zderzenie(planeta, ladowisko, statek);
     }
 
-    public void aktualizujPolozenieStatku() {
+    /** Metoda, ktora aktualizuje polozenie statku i jego prędkosc*/
+    private void aktualizujPolozenieStatku() {
         for (int i = 0; i <= 2; i++) {
             xStatku[i] += xPredkosc;
             yStatku[i] += yPredkosc;
@@ -128,6 +165,11 @@ public class Gra extends Canvas {
             xPredkosc += 0.5;
     }
 
+    /** Metoda informujaca o zderzeniu statku z podlozem (planeta lub ladowiskiem), posiada 3 parametry:
+     * @param planeta to bledne podloze- kontakt z nim to stracone zycie,
+     * @param ladowisko to poprawne podloze- kontakt z nim to ukonczenie poziomu,
+     * @param statek to nasz obiekt, ktorym sie poruszamy.
+     */
     private void zderzenie(Polygon planeta, Polygon ladowisko, Polygon statek) {
         if (ladowisko.intersects(statek.getBounds()) && (abs(xPredkosc) <= PropertiesGry.xPredkoscLadowania && abs(yPredkosc) <= abs(PropertiesGry.yPredkoscLadowania))) {
             czyWyladowano = true;
@@ -141,6 +183,10 @@ public class Gra extends Canvas {
         }
     }
 
+    /** Metoda informujaca o zebraniu bonusu przez statek, posiada 2 parametry:
+     * @param bonus to obiekt unoszacy sie w przestrzeni, zderzenie z nim to uzyskanie dodatkowych punktow,
+     * @param statek to nasz obiekt, ktorym sie poruszamy.
+     */
     private void zebranieBonusu(Polygon bonus, Polygon statek) {
         if (bonus.intersects(statek.getBounds())) {
             wynik += punktyZaBonus;
@@ -148,17 +194,23 @@ public class Gra extends Canvas {
         }
     }
 
-    public void czyZapauzowano() {
+    /** Metoda, ktora informuje o zapauzowaniu rozgrywki.
+     */
+    void czyZapauzowano() {
         czyZapauzowano = true;
     }
 
-    public void czyWznowiono() {
+    /** Metoda, ktora informuje o wznowieniu rozgrywki.
+     */
+    void czyWznowiono() {
         czyZapauzowano = false;
     }
 
+    /** Klasa odpowiadajaca za animacje rozgrywki, aktualizuje polozenie, uwzgledniajac pauze. Wyswietla nastepny dostepny bufor, kopiujac pamiec.
+     */
     public class Animacja extends TimerTask {
         int i = 0;
-
+        /** Metoda, ktora odpowiada za dzialanie Timera*/
         public void run() {
             if (!czyZapauzowano) {
                 if (i == 3) {

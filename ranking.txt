@@ -1,0 +1,21 @@
+#Wed Jun 10 17:40:26 CEST 2020
+wynik7=760
+wynik6=773
+wynik9=653
+wynik8=735
+wynik3=834
+wynik2=847
+wynik5=789
+wynik4=814
+wynik1=847
+gracz4=Mariano Diaz
+gracz3=Andrzej Duda
+gracz2=Roman ze Z\u0142otoryi
+wynik10=650
+gracz1=Weronika
+gracz9=Stachu Jones
+gracz8=zybi
+gracz10=Tester
+gracz7=gitmaster
+gracz6=Wujek Lucjan
+gracz5=Hop

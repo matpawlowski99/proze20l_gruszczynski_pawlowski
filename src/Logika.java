@@ -13,22 +13,33 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Color;
 import java.awt.event.ActionListener;
-
 import static java.lang.StrictMath.abs;
 
+/**
+ * Klasa abstrakcyjna odpowiadajaca za okno rogrywki i komunikaty z nim zwiazane.
+ */
 public abstract class Logika implements ActionListener {
-
-    JFrame ramkaGry, ramkaZaliczenia, ramkaNiezaliczenia, ramkaKoncaGry;
-    JPanel panelGry, panelKoncaGry;
-    JButton bPauza, bWspaniale, bEhh, bMenuGlowne;
-    JLabel lStatki, lPaliwo, lPredkoscX, lPredkoscY, lZaliczenia, lNiezaliczenia, lGraZakonczona, lGracz, lWynik;
-    Timer licznikAnimacji;
-    int ostatecznyWynik;
+    /** Ramki wystepujace podczas rozgrywki: gry, zaliczenia gry, niezaliczenia gry, konca gry */
+    private JFrame ramkaGry, ramkaZaliczenia, ramkaNiezaliczenia, ramkaKoncaGry;
+    /** Panele wystepujace podczas gry: panel gry oraz panel konca gry*/
+    private JPanel panelGry, panelKoncaGry;
+    /** Przyciski i komentarze wystepujace podczas rozgrywki: Pauza, "Wspaniale! Przejdzmy dalej!", "Ehh... Sprobujmy jeszcze raz", "Powrot do menu glownego" */
+    private JButton bPauza, bWspaniale, bEhh, bMenuGlowne;
+    /** Etykiety w rozgrywce: Statki, Paliwo, PredkoscX, PredkoscY, "Gratulacje - plansza zaliczona!", "Niestety - koniec paliwa!" lub "Niestety - rozbiles sie!", Gra zakonczona, Gracz, Wynik */
+    private JLabel lStatki, lPaliwo, lPredkoscX, lPredkoscY, lZaliczenia, lNiezaliczenia, lGraZakonczona, lGracz, lWynik;
+    /** Zmienna przechowujaca czas animacji*/
+    private Timer licznikAnimacji;
+    /** Zmienna przechowujaca koncowy wynik uzyskany przez gracza*/
+    private int ostatecznyWynik;
     //int pozostaleStatki = 3;
 
-    Klawiatura klawiatura;
+    /** Tworzymy zmienna klasy Klawiatura*/
+    private Klawiatura klawiatura;
 
-    public void oknoGry(int numerPlanszy) throws IOException {
+    /**Metoda, ktora wczytuje okno gry, obsluguje wyjatki zwiazane z wczytaniem plikow przy pomocy IOException
+     @param numerPlanszy to numer naszej planszy
+     @throws IOException , gdy plik nie istnieje */
+    void oknoGry(int numerPlanszy) throws IOException {
         ramkaGry = new JFrame("Gra");
         ramkaGry.setSize(PropertiesGry.SZEROKOSC,PropertiesGry.WYSOKOSC);
         ramkaGry.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -89,7 +100,7 @@ public abstract class Logika implements ActionListener {
                 lPaliwo.setText("PALIWO: " + gra.paliwo + "%");
                 if (gra.paliwo >= 50)
                     lPaliwo.setForeground(Color.BLACK);
-                else if (gra.paliwo >= 25 && gra.paliwo < 50)
+                else if (gra.paliwo >= 25)
                     lPaliwo.setForeground(new Color(255, 145,0));
                 else
                     lPaliwo.setForeground(Color.RED);
@@ -100,19 +111,23 @@ public abstract class Logika implements ActionListener {
                         ramkaGry.dispose();
                     }
                     else {
-                        koniecGry(DodajGracza.nazwaGracza, ostatecznyWynik);
+                        try {
+                            koniecGry(DodajGracza.nazwaGracza, ostatecznyWynik);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                         ramkaGry.dispose();
                     }
                     return;
                 }
 
-                lPredkoscX.setText("PRĘDKOŚĆ X: " + String.format("%.1f", abs(gra.xPredkosc)));
+                lPredkoscX.setText("PREDKOSC X: " + String.format("%.1f", abs(gra.xPredkosc)));
                 if (abs(gra.xPredkosc) > PropertiesGry.xPredkoscLadowania)
                     lPredkoscX.setForeground(Color.RED);
                 else
                     lPredkoscX.setForeground(Color.BLACK);
 
-                lPredkoscY.setText("PRĘDKOŚĆ Y: " + String.format("%.1f", abs(gra.yPredkosc)));
+                lPredkoscY.setText("PREDKOSC Y: " + String.format("%.1f", abs(gra.yPredkosc)));
                 if (abs(gra.yPredkosc) > PropertiesGry.yPredkoscLadowania)
                     lPredkoscY.setForeground(Color.RED);
                 else
@@ -127,7 +142,7 @@ public abstract class Logika implements ActionListener {
                     ostatecznyWynik += gra.punktyZaPlansze;
                     zaliczPlansze();
                     ramkaGry.dispose();
-                    System.out.println(ostatecznyWynik);
+                    //System.out.println(ostatecznyWynik);
                 }
                 if ((gra.czyRozbito || gra.paliwo <= 0) && DodajGracza.pozostaleStatki > 1) {
                     nieZaliczPlanszy(gra);
@@ -142,13 +157,16 @@ public abstract class Logika implements ActionListener {
             }
         }).start();
     }
-
-    public void resetujLicznikAnimacji() {
+    /** Metoda, ktora resetuje licznik animacji*/
+    private void resetujLicznikAnimacji() {
         licznikAnimacji.cancel();
         licznikAnimacji.purge();
     }
 
-    public void zapauzuj(Gra gra) {
+    /** Metoda, ktora zatrzymuje (pauzuje) animacje, posiada parametr:
+     * @param gra to parametr, dzieki ktoremu pauza wplywa bezposrednio na ruch w grze
+     */
+    private void zapauzuj(Gra gra) {
         if (!gra.czyZapauzowano) {
             gra.czyZapauzowano();
             gra.czyZapauzowano = true;
@@ -160,7 +178,8 @@ public abstract class Logika implements ActionListener {
         }
     }
 
-    public void zaliczPlansze() {
+    /** Metoda, ktora zalicza nam dany poziom (plansze) i wyswietla odpowiednie komunikaty*/
+    private void zaliczPlansze() {
         ramkaZaliczenia = new JFrame("");
         ramkaZaliczenia.setSize(300,130);
         ramkaZaliczenia.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -187,7 +206,10 @@ public abstract class Logika implements ActionListener {
         ramkaZaliczenia.setVisible(true);
     }
 
-    public void nieZaliczPlanszy(Gra gra) {
+    /** Metoda, ktora nie zalicza nam danego poziomu (planszy) i wyswietla odpowiednie komunikaty, posiada jeden parametr:
+     * @param gra to paramter, dla ktorego zostaje wyswietlony komunikat o niezaliczeniu gry gdy ten parametr osiagnie okreslona wartosc
+     */
+    private void nieZaliczPlanszy(Gra gra) {
         ramkaNiezaliczenia = new JFrame("");
         ramkaNiezaliczenia.setSize(300,130);
         ramkaNiezaliczenia.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -198,7 +220,7 @@ public abstract class Logika implements ActionListener {
         if (gra.paliwo == 0)
             lNiezaliczenia = new JLabel("Niestety - koniec paliwa!",SwingConstants.CENTER);
         else
-            lNiezaliczenia = new JLabel("Niestety - rozbiłeś się!",SwingConstants.CENTER);
+            lNiezaliczenia = new JLabel("Niestety - rozbiłeś(aś) się!",SwingConstants.CENTER);
         lNiezaliczenia.setBounds(40,20,200,15);
         ramkaNiezaliczenia.add(lNiezaliczenia);
 
@@ -218,7 +240,15 @@ public abstract class Logika implements ActionListener {
         ramkaNiezaliczenia.setVisible(true);
     }
 
-    public void koniecGry(String gracz, int wynik) {
+    /** Metoda, ktora konczy nasza gre i wyswietla odpowiednie komunikaty oraz ostateczny wynik, posiada 2 paremtry:
+     * @param gracz to parametr, dla ktorego zostaje przypisany uzyskany wynik,
+     * @param wynik to paremetr, ktory otrzymuje wartosc w momencie zakonczenia kazdej planszy
+     */
+    private void koniecGry(String gracz, int wynik) throws IOException {
+        RankingNajlepszych.dodajRekord(gracz, wynik);
+        RankingNajlepszych.zapiszRanking();
+        RankingNajlepszych.wczytajRanking();
+
         ramkaGry.dispose();
 
         ramkaKoncaGry = new JFrame("KONIEC GRY");
@@ -254,7 +284,10 @@ public abstract class Logika implements ActionListener {
         ramkaKoncaGry.setVisible(true);
     }
 
-    public void nastepnaPlansza() throws IOException {
+    /**Metoda, ktora wprowadza nam do gry nastepny poziom (plansze)) i wyswietla odpowiednie komunikaty po pomyslnym ukonczeniu planszy. Obsluguje wyjatki zwiazane z wczytaniem plikow przy pomocy IOException
+     * @throws IOException , gdy plik nie istnieje.
+     */
+    private void nastepnaPlansza() throws IOException {
         resetujLicznikAnimacji();
         if (DodajGracza.nrPlanszy < PropertiesGry.liczbaPoziomow) {
             DodajGracza.nrPlanszy++;

@@ -3,37 +3,57 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.io.FileInputStream;
 import java.util.Arrays;
-
+/** Klasa odpowiadajaca za rozmieszczenie i ruch elementow na planszy gry*/
 public class PropertiesGry {
-
+    /** Szerokosc okna ustawiona na domyslna*/
     static final int SZEROKOSC = 800;
+    /** Wysokosc okna ustawiona na domyslna*/
     static final int WYSOKOSC = 600;
-
+    /** Polozenie na osi x wierzcholkow planety*/
     static int[] xWierzcholkiPlanety;
+    /** Polozenie na osi y wierzcholkow planety*/
     static int[] yWierzcholkiPlanety;
+    /** Polozenie na osi x ladowiska*/
     static int[] xLadowiska;
+    /** Polozenie na osi y ladowiska*/
     static int[] yLadowiska;
+    /** Polozenie na osi x punktu startowego statku*/
     static int[] xStartoweStatku;
+    /** Polozenie na osi y punktu startowego statku*/
     static int[] yStartoweStatku;
+    /** Poloznie na osi x bonusu*/
     static int[] xBonusu;
+    /** Polozenie na osi y bonusu*/
     static int[] yBonusu;
 
-    static int xPredkoscStatku;
-    static int yPredkoscStatku;
+    /** Predkosc maksymalna wzdluz osi x*/
     static int xPredkoscMax;
+    /** Predkosc maksymalna wzdluz osi y*/
     static int yPredkoscMax;
+    /** Predkosc maksymalna ladowania wzdluz osi x (ktora nie powoduje rozbicia sie statku)*/
     static int xPredkoscLadowania;
+    /** Predkosc maksymalna ladowania wzdluz osi y (ktora nie powoduje rozbicia sie statku)*/
     static int yPredkoscLadowania;
+    /** Zmienna przechowujaca liczbe statkow*/
     static int liczbaStatkow;
+    /** Zmienna przechowujaca paliwo, które pozostało*/
     static int paliwo;
+    /** Zmienna przechowująca liczbe poziomow gry*/
     static int liczbaPoziomow;
+    /** Zmienna przechowujaca liczbe uzyskanych punktow za przejscie poziomu*/
     static int punktyZaPlansze;
+    /** Zmienna przechowujaca liczbe uzyskanych punktow za zdobycie bonusu*/
     static int punktyZaBonus;
-
+    /** Plik jako strumien wejsciowy */
     private static InputStream plik;
+    /** Wlasciwosci rozgrywki*/
     private static Properties configPlanszy;
 
-    public static void wczytajPlansze(int nrPlanszy) throws IOException {
+    /** Metoda jednoparametrowa, ktora wczytuje plansze gry, obsluguje wyjatki zwiazane z wczytaniem plikow przy pomocy IOException
+     * @param nrPlanszy jako nrPlanszy,
+     * @throws IOException , gdy plik nie istnieje.
+     * */
+    static void wczytajPlansze(int nrPlanszy) throws IOException {
         plik = new FileInputStream("plansza" + nrPlanszy + ".txt");
         configPlanszy = new Properties();
         configPlanszy.load(plik);
@@ -47,8 +67,6 @@ public class PropertiesGry {
         xBonusu = Arrays.stream(configPlanszy.getProperty("xBonusu").split("-")).mapToInt(Integer::parseInt).toArray();
         yBonusu = Arrays.stream(configPlanszy.getProperty("yBonusu").split("-")).mapToInt(Integer::parseInt).toArray();
 
-        xPredkoscStatku = Integer.parseInt(configPlanszy.getProperty("xPredkoscStatku"));
-        yPredkoscStatku = Integer.parseInt(configPlanszy.getProperty("yPredkoscStatku"));
         xPredkoscMax = Integer.parseInt(configPlanszy.getProperty("xPredkoscMax"));
         yPredkoscMax = Integer.parseInt(configPlanszy.getProperty("yPredkoscMax"));
         xPredkoscLadowania = Integer.parseInt(configPlanszy.getProperty("xPredkoscLadowania"));
@@ -62,8 +80,8 @@ public class PropertiesGry {
 
         dostosujSkale();
     }
-
-    public static void dostosujSkale() {
+    /** Metoda, ktora dostosowywuje skale planszy*/
+    private static void dostosujSkale() {
         xWierzcholkiPlanety = Arrays.stream(xWierzcholkiPlanety).map(x_wierzcholki_planety -> (int)(0.0125 * PropertiesGry.SZEROKOSC * x_wierzcholki_planety)).toArray();
         yWierzcholkiPlanety = Arrays.stream(yWierzcholkiPlanety).map(y_wierzcholki_planety -> (int)(0.0125 * PropertiesGry.WYSOKOSC * y_wierzcholki_planety)).toArray();
         xLadowiska = Arrays.stream(xLadowiska).map(x_ladowiska -> (int)(0.0125 * PropertiesGry.SZEROKOSC * x_ladowiska)).toArray();

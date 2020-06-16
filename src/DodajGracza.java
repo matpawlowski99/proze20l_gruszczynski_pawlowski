@@ -3,17 +3,28 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-
+/**
+ * Klasa odpowiadajaca za okno z nazwa gracza, obsluguje przyciski znajdujace sie w nim.
+ */
 public class DodajGracza extends Logika implements ActionListener {
-
+    /** Zmienna przechowujaca numer planszy*/
     static int nrPlanszy;
+    /** Zmienna przechowujaca liczbe statkow na poczatku rozgrywki*/
     static int pozostaleStatki = 3;
+    /** Zmienna przechowujaca nazwe gracza*/
     static String nazwaGracza;
+    /** Przycisk, ktory jest odpowiedzialny za dodanie gracza*/
     static JDialog dodajGracza;
+    /** Przycisk odpowiedzialny za wyswietlenie informacji: Podaj nazwe gracza */
     private JLabel lPodajNazweGracza;
+    /** Przycisk odpowiedzialny za utworzenie pola do wpisania nicku gracza*/
     private JTextField tNick;
-    private JButton bZatwierdz, bWstecz;
+    /** Zmienna odpowiedzialna za przycisk: ZATWIERDZ */
+    private JButton bZatwierdz;
+    /** Zmienna odpowiedzialna za przycisk: WSTECZ*/
+    private JButton bWstecz;
 
+    /** Metoda, ktora rysuje okienko z nazwa gracza do uzupelnienia oraz wyswietla przyciski: "Zatwierdz" oraz "Wstecz"*/
     public DodajGracza() {
         dodajGracza = new JDialog((Dialog) null,"",true);
         //super((Dialog) null,"",true);
@@ -46,7 +57,9 @@ public class DodajGracza extends Logika implements ActionListener {
 
         //dodajGracza.setVisible(true);
     }
-
+    /** Sprawdzamy zrodlo zdarzenia, pobrane metoda getSource() - czy zostal nacisniety przycisk: Zatwierdz lub Wstecz. Ustawiamy tez widocznosc okienka: Dodaj Gracza
+     * @param e zdarzenie (wybor odpowiedniego przycisku)
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object zrodlo = e.getSource();

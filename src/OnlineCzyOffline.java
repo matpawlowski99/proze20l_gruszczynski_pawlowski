@@ -8,14 +8,23 @@ import java.awt.FlowLayout;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/** Klasa odpowiadajaca za okno Online/Offline, obsluguje przyciski znajdujace sie w nim.
+ */
 public class OnlineCzyOffline extends JDialog implements ActionListener {
-
+    /** Zmienna odpowiedzialna za dodanie gracza*/
     private DodajGracza dodajGracza;
+    /** Przechowuje informacje o okienku*/
     private JPanel panel;
-    private JButton bOnline, bOffline;
+    /** Przechowuje informacje o wyborze gry online*/
+    private JButton bOnline;
+    /** Przechowuje informacje o wyborze gry offline*/
+    private JButton bOffline;
+    /** Przechowuje informacje o wyborze trybu gry*/
     private JLabel lWybierzTryb;
 
+    /** Metoda rysujaca okienko online/offline, posiada jeden parametr:
+     * @param owner jest komponentem modalnym na rzecz komponentu public OnlineCzyOffline().
+     */
     public OnlineCzyOffline(JFrame owner) {
         super(owner, "", true);
         setSize(250,125);
@@ -41,7 +50,9 @@ public class OnlineCzyOffline extends JDialog implements ActionListener {
 
         //setVisible(true);
     }
-
+    /** Sprawdzamy zrodlo zdarzenia, pobrane metoda getSource() - czy zostal nacisniety przycisk: Offline czy Online. Ustawiamy tez widocznosc okienka: Offline
+     * @param e zdarzenie (wybor odpowiedniego przycisku)
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object zrodlo = e.getSource();
