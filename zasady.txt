@@ -1,16 +1,16 @@
- Celem gry jest wylądowanie statkiem na powierzchni jakiejś planety.
-Plansza gry przedstawia nieregularną powierzchnię z płaskim fragmentem przeznaczonym na lądowisko.
-Zadaniem gracza jest doprowadzenie do pomyślnego wylądowania statku na lądowisku.
-Statek opada swobodnie pod wpływem grawitacji.
-Gracz może sterować silnikami rakietowymi spowalniającymi opadanie lub przesuwającymi statek na boki.
-Lądowanie jest pomyślne, gdy nastąpiło na lądowisku z ograniczoną prędkością (zarówno poziomą jak i pionową).
-Sterowanie odbywa się za pomocą strzałek na klawiaturze.
-Gra składa się z poziomów - plansz, przedstawiających różne ukształtowanie terenu.
-Kolejne poziomy różnią się szerokością lądowiska, stałą grawitacji, dopuszczalnymi prędkościami lądowania, itp.
-Przejście na kolejny poziom następuje po pomyślnym wylądowaniu.
-Rozbicie statku powoduje powtórzenie poziomu.
-Gracz ma 3 statki na każdą planszę.
-Ukończenie każdej planszy nagradzane jest 100 punktami.
-Dodatkowo graczowi przysługuje premia za ilość pozostałego paliwa (dla przykładu: Adamowi zostało 23% paliwa, zatem otrzymuje dodatkowe 23 punkty) oraz liczbę pozostałych, nierozbitych statków - po 10 punktów za każdy ocalony.
-Elementem dodatkowym będą bonusy usytuowane jako małe kwadraty na planszy gry.
-W momencie kontaktu (zderzenia) statku z bonusem uzyskujemy dodatkowe 20 punktów.
+ Celem gry jest wyladowanie statkiem na powierzchni jakiejs planety.
+Plansza gry przedstawia nieregularna powierzchnie z plaskim fragmentem przeznaczonym na ladowisko.
+Zadaniem gracza jest doprowadzenie do pomyslnego wyladowania statku na ladowisku.
+Statek opada swobodnie pod wplywem grawitacji.
+Gracz moze sterowac silnikami rakietowymi spowalniajacymi opadanie lub przesuwajacymi statek na boki.
+Ladowanie jest pomyslne, gdy nastapilo na ladowisku z ograniczona predkoscia (zarowno pozioma jak i pionowa).
+Sterowanie odbywa sie za pomoca strzalek na klawiaturze.
+Gra sklada sie z poziomow - plansz, przedstawiajacych rozne uksztaltowanie terenu.
+Kolejne poziomy roznia sie szerokoscia ladowiska, stala grawitacji, dopuszczalnymi predkosciami ladowania, itp.
+Przejscie na kolejny poziom nastepuje po pomyslnym wyladowaniu.
+Rozbicie statku powoduje powtorzenie poziomu.
+Gracz ma 3 statki na kazda plansze.
+Ukonczenie kazdej planszy nagradzane jest 100 punktami.
+Dodatkowo graczowi przysluguje premia za ilosc pozostalego paliwa (dla przykladu: Adamowi zostalo 23% paliwa, zatem otrzymuje dodatkowe 23 punkty) oraz liczbe pozostalych, nierozbitych statkow - po 10 punktow za kazdy ocalony.
+Elementem dodatkowym beda bonusy usytuowane jako male kwadraty na planszy gry.
+W momencie kontaktu (zderzenia) statku z bonusem uzyskujemy dodatkowe 20 punktow.
